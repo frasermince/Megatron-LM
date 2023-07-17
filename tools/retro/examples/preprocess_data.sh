@@ -6,12 +6,13 @@ unset NCCL_DEBUG
 
 ######## Megatron, Retro dirs. ########
 
-REPO_DIR="<path/to/megatron/repo>"
-RETRO_WORKDIR="<path/to/retro/data/directory>"
+PYTHONPATH=/usr/bin/python
+REPO_DIR="/root/Megatron-LM"
+RETRO_WORKDIR="/root/Megatron-LM/data"
 
 ######## Task (e.g., db, index, query). ########
 
-RETRO_TASKS="db-build"
+RETRO_TASKS="build"
 # RETRO_TASKS="index-train"
 # RETRO_TASKS="index-add"
 # RETRO_TASKS="query-pretraining-neighbors"
@@ -62,12 +63,12 @@ ARGS=" \
     --global-batch-size ${RETRO_GPT_GLOBAL_BATCH_SIZE} \
     --seq-length 512 \
     --max-position-embeddings 512 \
-    --load <path/to/bert/checkpoint> \
+    --load /root/Megatron-LM/bert/megatron_bert_345m_v0.1_uncased.zip \
     --exit-on-missing-checkpoint \
     --no-load-optim \
     --data-path ${RETRO_GPT_DATA_PATH} \
     --tokenizer-type BertWordPieceLowerCase \
-    --vocab-file <path/to/bert/vocab> \
+    --vocab-file /root/Megatron-LM/bert/bert-large-uncased-vocab.txt \
     --data-impl ${RETRO_GPT_DATA_IMPL} \
     --split ${RETRO_GPT_SPLIT} \
     --distributed-backend nccl \
@@ -93,11 +94,9 @@ ARGS=" \
     --retro-workdir ${RETRO_WORKDIR} \
     --retro-tasks ${RETRO_TASKS} \
     --retro-return-doc-ids \
-    --retro-bert-vocab-file <path/to/bert/vocab> \
+    --retro-bert-vocab-file /root/Megatron-LM/bert/bert-large-uncased-vocab.txt \
     --retro-bert-tokenizer-type BertWordPieceLowerCase \
     --retro-gpt-seed ${RETRO_GPT_SEED} \
-    --retro-gpt-tokenizer-type GPTSentencePieceTokenizer \
-    --retro-gpt-tokenizer-model <path/to/gpt/tokenizer/model> \
     --retro-gpt-seq-length ${RETRO_GPT_SEQ_LENGTH} \
     --retro-gpt-chunk-length ${RETRO_GPT_CHUNK_LENGTH} \
     --retro-gpt-global-batch-size ${RETRO_GPT_GLOBAL_BATCH_SIZE} \
@@ -120,15 +119,12 @@ ARGS=" \
 
 ######## Command. ########
 
-NPROCS=8 # Number of GPUs.
+NPROCS=1 # Number of GPUs.
 CMD="\
     cd ${REPO_DIR} && pwd && \
     export PYTHONPATH=$PYTHONPATH:${REPO_DIR} && \
     python -m torch.distributed.run \
     --nproc_per_node ${NPROCS} \
-    --nnodes 1 \
-    --node_rank ${NODE_RANK} \
-    --master_addr ${MASTER_ADDR} \
     --master_port 6000 \
     tools/retro/main.py ${ARGS} \
 "
@@ -136,3 +132,4 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "CMD = '$CMD'."
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~"
 eval $CMD
+
