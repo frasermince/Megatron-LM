@@ -99,7 +99,7 @@ ARGS=" \
     --retro-bert-tokenizer-type BertWordPieceLowerCase \
     --retro-gpt-seed ${RETRO_GPT_SEED} \
     --retro-gpt-tokenizer-type GPTSentencePieceTokenizer \
-    --retro-gpt-tokenizer-model <path/to/gpt/tokenizer/model> \
+    --retro-gpt-tokenizer-model /root/Megatron-LM/data/tokenizer.model \
     --retro-gpt-seq-length ${RETRO_GPT_SEQ_LENGTH} \
     --retro-gpt-chunk-length ${RETRO_GPT_CHUNK_LENGTH} \
     --retro-gpt-global-batch-size ${RETRO_GPT_GLOBAL_BATCH_SIZE} \
