@@ -20,7 +20,7 @@ RETRO_TASKS="build"
 ######## Data. ########
 
 # DATA_BLEND="<see --data-path in arguments.py>"
-DATA_BLEND="/root/outdata/wiki_all.json"
+DATA_BLEND="1.0 my-gpt2_text_document"
 # DATA_BLEND="/root/data"
 
 ######## Index. ########
