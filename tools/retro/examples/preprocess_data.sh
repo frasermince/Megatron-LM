@@ -8,7 +8,7 @@ unset NCCL_DEBUG
 
 PYTHONPATH=/usr/bin/python
 REPO_DIR="/root/Megatron-LM"
-RETRO_WORKDIR="/root/outdata/wiki_all.json"
+RETRO_WORKDIR="/root/outdata"
 
 ######## Task (e.g., db, index, query). ########
 
@@ -20,7 +20,8 @@ RETRO_TASKS="build"
 ######## Data. ########
 
 # DATA_BLEND="<see --data-path in arguments.py>"
-DATA_BLEND="/root/data"
+DATA_BLEND="/root/outdata/wiki_all.json"
+# DATA_BLEND="/root/data"
 
 ######## Index. ########
 
