@@ -12,4 +12,4 @@ cd ~/Megatron-LM/gpt && wget https://s3.amazonaws.com/models.huggingface.co/bert
 cd ~/Megatron-LM/gpt && wget https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-merges.txt
 # cd ~/Megatron-LM/gpt && unzip megatron_lm_345m_v0.0.zip
 
-#python tools/preprocess_data.py        --input /root/outdata/wiki_all.json        --output-prefix my-gpt2        --vocab-file gpt/gpt2-vocab.json        --dataset-impl mmap        --tokenizer-type GPT2BPETokenizer        --merge-file gpt/gpt2-merges.txt        --append-eod --workers 1
+#python tools/preprocess_data.py --input /root/outdata/wiki_all.json --output-prefix my-gpt2 --dataset-impl mmap --tokenizer-type GPTSentencePieceTokenizer --tokenizer-model sentencepiece.model --append-eod --workers 1

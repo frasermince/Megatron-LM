@@ -65,7 +65,7 @@ ARGS=" \
     --global-batch-size ${RETRO_GPT_GLOBAL_BATCH_SIZE} \
     --seq-length 512 \
     --max-position-embeddings 512 \
-    --load /root/Megatron-LM/bert/megatron_bert_345m_v0.1_uncased.zip \
+    --load /root/Megatron-LM/bert/ \
     --exit-on-missing-checkpoint \
     --no-load-optim \
     --data-path ${RETRO_GPT_DATA_PATH} \
